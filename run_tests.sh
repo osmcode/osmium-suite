@@ -33,16 +33,20 @@ has_cmake_tests() {
 
 test_using_cmake() {
     REPOS=$1
+    CMAKE_OPTIONS=$2
+
     BUILD_DIR="build-test-${DATE}-${CXX}-${CPP_VERSION}"
-    msg "Tests: $REPOS...\n"
+    msg "Repository $REPOS: Configuring..."
     cd $REPOS
 
-    set -x
     mkdir $BUILD_DIR
     cd $BUILD_DIR
     cmake -L -DCMAKE_BUILD_TYPE=Dev -DUSE_CPP_VERSION=$CPP_VERSION $CMAKE_OPTIONS ..
+
+    msg "Repository $REPOS: Building..."
     make VERBOSE=1
 
+    msg "Repository $REPOS: Testing..."
     # run internal tests
     has_cmake_tests && ctest -V
 
@@ -52,10 +56,9 @@ test_using_cmake() {
 
     cd ..
     rm -fr $BUILD_DIR
-    set +x
 
     cd ..
-    msg "Tests: $REPOS done\n"
+    msg "Repository $REPOS: done\n"
 }
 
 cd ..
@@ -67,11 +70,9 @@ for compiler in $COMPILERS; do
     CPP_VERSION=${compiler#*,}
     msg "Using compiler $CXX and version $CPP_VERSION..."
 
-    CMAKE_OPTIONS="-DBUILD_HEADERS=ON"
-    test_using_cmake libosmium
-
-    CMAKE_OPTIONS=""
-    test_using_cmake osmium-tool
+    test_using_cmake libosmium -DBUILD_HEADERS=ON
+    test_using_cmake osmium-tool -DBUILD_WITH_CRYPTOPP=ON
+    test_using_cmake osmium-tool -DBUILD_WITH_CRYPTOPP=OFF
     test_using_cmake osmium-contrib
 done
 
