@@ -8,6 +8,10 @@ COMPILERS="clang++-3.5,c++11 g++-4.9,c++11 clang++-3.4,c++11 g++-4.8,c++11 clang
 #COMPILERS="clang++,c++11"
 #COMPILERS="g++-4.9,c++11 g++-4.8,c++11"
 
+if [ -z "$OSMIUM_TEST_BUILD_ROOT" ]; then
+    OSMIUM_TEST_BUILD_ROOT='.'
+fi
+
 THIS_DIR=`pwd`
 
 DATE=`date +'%Y%m%dT%H%M'`
@@ -35,13 +39,13 @@ test_using_cmake() {
     REPOS=$1
     CMAKE_OPTIONS=$2
 
-    BUILD_DIR="build-test-${DATE}-${CXX}-${CPP_VERSION}"
+    BUILD_DIR="${OSMIUM_TEST_BUILD_ROOT}/build-test-$REPOS-${DATE}-${CXX}-${CPP_VERSION}"
     msg "Repository $REPOS: Configuring..."
-    cd $REPOS
 
+    SOURCE_DIR=`pwd`/$REPOS
     mkdir $BUILD_DIR
     cd $BUILD_DIR
-    cmake -L -DCMAKE_BUILD_TYPE=Dev -DUSE_CPP_VERSION=$CPP_VERSION $CMAKE_OPTIONS ..
+    cmake -L -DCMAKE_BUILD_TYPE=Dev -DUSE_CPP_VERSION=$CPP_VERSION $CMAKE_OPTIONS $SOURCE_DIR
 
     msg "Repository $REPOS: Building..."
     make VERBOSE=1
