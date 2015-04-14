@@ -4,7 +4,7 @@
 #
 
 # the compiler/c++ version combinations to test
-COMPILERS="clang++-3.5,c++11 g++-4.9,c++11 clang++-3.4,c++11 g++-4.8,c++11 clang++,c++14 g++-4.9,c++14"
+COMPILERS="clang++-3.5,c++11 g++-4.9,c++11 clang++-3.4,c++11 g++-4.8,c++11 clang++-3.5,c++14 g++-4.9,c++14"
 #COMPILERS="clang++,c++11"
 #COMPILERS="g++-4.9,c++11 g++-4.8,c++11"
 
@@ -36,6 +36,7 @@ has_cmake_tests() {
 }
 
 test_using_cmake() {
+    CURRENT_DIR=`pwd`
     REPOS=$1
     CMAKE_OPTIONS=$2
 
@@ -52,7 +53,7 @@ test_using_cmake() {
 
     msg "Repository $REPOS: Testing..."
     # run internal tests
-    has_cmake_tests && ctest -V
+    has_cmake_tests && ctest --output-on-failure
 
     # run external tests
     test_script="${THIS_DIR}/${REPOS}-tests.sh"
@@ -61,8 +62,8 @@ test_using_cmake() {
     cd ..
     rm -fr $BUILD_DIR
 
-    cd ..
     msg "Repository $REPOS: done\n"
+    cd $CURRENT_DIR
 }
 
 cd ..
@@ -74,10 +75,10 @@ for compiler in $COMPILERS; do
     CPP_VERSION=${compiler#*,}
     msg "Using compiler $CXX and version $CPP_VERSION..."
 
-    test_using_cmake libosmium -DBUILD_HEADERS=ON
-    test_using_cmake osmium-tool -DBUILD_WITH_CRYPTOPP=ON
-    test_using_cmake osmium-tool -DBUILD_WITH_CRYPTOPP=OFF
+    test_using_cmake libosmium
+    test_using_cmake osmium-tool
     test_using_cmake osmium-contrib
+    test_using_cmake osmcoastline
 done
 
 msg DONE

@@ -6,7 +6,7 @@
 #
 #
 
-REPOSITORIES="osmium-tool osmium-contrib"
+REPOSITORIES="osmium-tool osmium-contrib osmcoastline"
 ALL_REPOSITORIES="libosmium $REPOSITORIES"
 
 cd ..
