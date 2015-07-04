@@ -12,8 +12,6 @@ if [ -z "$OSMIUM_TEST_BUILD_ROOT" ]; then
     OSMIUM_TEST_BUILD_ROOT='.'
 fi
 
-THIS_DIR=`pwd`
-
 DATE=`date +'%Y%m%dT%H%M'`
 
 exec >testrun-$DATE.log 2>&1
@@ -54,10 +52,6 @@ test_using_cmake() {
     msg "Repository $REPOS: Testing..."
     # run internal tests
     has_cmake_tests && ctest --output-on-failure
-
-    # run external tests
-    test_script="${THIS_DIR}/${REPOS}-tests.sh"
-    [ -e $test_script ] && $test_script
 
     cd ..
     rm -fr $BUILD_DIR
