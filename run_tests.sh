@@ -60,6 +60,35 @@ test_using_cmake() {
     cd $CURRENT_DIR
 }
 
+test_using_setup() {
+    CURRENT_DIR=`pwd`
+    REPOS=$1
+    CMAKE_OPTIONS=$2
+
+    BUILD_DIR="${OSMIUM_TEST_BUILD_ROOT}/build-test-$REPOS-${DATE}-${CXX}-${CPP_VERSION}"
+    msg "Repository $REPOS: Configuring..."
+
+    SOURCE_DIR=`pwd`/$REPOS
+    mkdir $BUILD_DIR
+    cd $BUILD_DIR
+    ln -s "$SOURCE_DIR/../libosmium"
+    git clone $SOURCE_DIR $REPOS
+    cd $REPOS
+
+    msg "Repository $REPOS: Building..."
+    python setup.py build
+
+    msg "Repository $REPOS: Testing..."
+    cd test
+    python run_tests.py
+
+    cd ../../..
+    rm -fr $BUILD_DIR
+
+    msg "Repository $REPOS: done\n"
+    cd $CURRENT_DIR
+}
+
 cd ..
 
 msg START
@@ -70,6 +99,7 @@ for compiler in $COMPILERS; do
     msg "Using compiler $CXX and version $CPP_VERSION..."
 
     test_using_cmake libosmium
+    test_using_setup pyosmium
     test_using_cmake osmium-tool
     test_using_cmake osmium-contrib
     test_using_cmake osmcoastline
