@@ -22,7 +22,7 @@ RED="\033[1;31m"
 
 echo "== Comparing cmake files..."
 for repos in $REPOSITORIES; do
-    for file in FindOSMPBF FindOsmium; do
+    for file in FindOsmium; do
         if diff -u libosmium/cmake/${file}.cmake $repos/cmake/${file}.cmake; then
             echo "[${GREEN}OK ${NORM}] ${file}"
         else
