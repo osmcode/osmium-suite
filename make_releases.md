@@ -1,5 +1,5 @@
 
-# Notes for making releases for the osmium suite
+# Notes for making releases for the Osmium suite
 
 Some notes for the maintainer on what to do for releases.
 
@@ -54,6 +54,25 @@ Some notes for the maintainer on what to do for releases.
 
 * [ ] Decide on new version number (see http://semver.org/)
 * [ ] Update version number in `CMakeLists.txt` (look for `OSMIUM_VERSION_`)
+* [ ] Update `CHANGELOG.md`
+* [ ] Commit updates
+
+    git commit -m 'Release vX.Y.Z' CHANGELOG.md CMakeLists.txt
+
+* [ ] Tag release
+
+    git tag vX.Y.Z
+
+* [ ] Push changes
+
+    git push
+    git push --tags
+
+
+## OSMCoastline
+
+* [ ] Decide on new version number (see http://semver.org/)
+* [ ] Update version number in `CMakeLists.txt` (look for `OSMCOASTLINE_VERSION_`)
 * [ ] Update `CHANGELOG.md`
 * [ ] Commit updates
 
