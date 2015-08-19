@@ -1,0 +1,124 @@
+#!/usr/bin/env ruby
+#
+#  import_benchmark_results <INPUT> <DB>
+#
+#  Import benchmark results into sqlite database for further processing.
+#
+
+require 'sqlite3'
+
+do_setup = false
+
+if ARGV.size != 2
+    puts "Usage: #{ $0 } <INPUT> <DBFILE>"
+    exit 1
+end
+
+input_name = ARGV[0]
+database_name = ARGV[1]
+
+db = SQLite3::Database.new(database_name)
+db.results_as_hash = true
+
+#-----------------------------------------------------------------------------
+
+data = []
+
+open(input_name) do |file|
+    file.each_line do |line|
+
+        items = {}
+        line.split(' ').each do |item|
+            kv = item.split('=')
+            if kv[1]
+                items[kv[0]] = kv[1]
+            end
+        end
+
+        data << items
+
+    end
+end
+
+#-----------------------------------------------------------------------------
+
+types = ['TEXT', 'REAL', 'INTEGER']
+
+field_names = data[0].keys
+
+fields = {}
+field_names.each do |field|
+    type = data.map{ |items| items[field] }.map { |content|
+        case content
+            when /^[0-9]+%?$/
+                2
+            when /^[0-9.]+%?$/
+                1
+            else
+                0
+        end
+    }.sort.uniq.min
+
+    fields[field] = types[type]
+end
+
+order = %w(c i n r b)
+
+order_key = {}
+order.each_with_index do |char, index|
+    order_key[char] = index
+end
+
+sorted_field_names = field_names.sort do |a,b|
+    atype = order_key[a[0]]
+    btype = order_key[b[0]]
+    [atype, a] <=> [btype, b]
+end
+
+puts "field names: #{ field_names.join(', ') }"
+puts "sorted names: #{ sorted_field_names.join(', ') }"
+
+#-----------------------------------------------------------------------------
+
+db.transaction do |db|
+
+    if do_setup
+
+        sql = "CREATE TABLE benchmarks ("
+        sql += field_names.map { |field|
+            "#{field} #{fields[field]}"
+        }.join(", ")
+        sql += ")"
+
+        puts sql
+        db.execute(sql);
+
+        sql = "CREATE VIEW agg_benchmarks AS SELECT "
+        sql += sorted_field_names.select{ |field| field !~ /^[nb]/ }.join(", ")
+        sql += ", COUNT(n) AS n, "
+        sql += sorted_field_names.select{ |field| field =~ /^[b]_/ }.map { |field|
+            "MIN(#{field}) AS min_#{field}, AVG(#{field}) AS avg_#{field}, MAX(#{field}) AS max_#{field}"
+        }.join(", ")
+        sql += " FROM benchmarks GROUP BY "
+        sql += field_names.select{ |field| field =~ /^[icr]_/ }.join(", ")
+        sql += ""
+
+        puts sql
+        db.execute(sql);
+
+    end
+
+    sql  = 'INSERT INTO benchmarks ('
+    sql += field_names.join(', ')
+    sql += ') VALUES ('
+    sql += field_names.map{ |x| '?' }.join(', ')
+    sql += ')'
+
+    puts sql
+
+    data.each do |items|
+        db.execute(sql, items.values.map{ |value| value.sub(/%$/, '') })
+    end
+
+end
+
