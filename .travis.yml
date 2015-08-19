@@ -1,0 +1,21 @@
+#-----------------------------------------------------------------------------
+#
+#  Configuration for continuous integration service at travis-ci.org
+#
+#-----------------------------------------------------------------------------
+
+language: cpp
+
+sudo: false
+
+install:
+    - for repos in libosmium osmium-tool osmium-contrib osmcoastline; do
+          git clone --quiet --depth 1 https://github.com/osmcode/${repos}.git ../${repos};
+      done
+
+script:
+    - cd ..
+    - for repos in osmium-tool osmium-contrib osmcoastline; do
+          cmp libosmium/cmake/FindOsmium.cmake ${repos}/cmake/FindOsmium.cmake || exit 1;
+      done
+
