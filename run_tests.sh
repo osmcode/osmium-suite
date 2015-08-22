@@ -99,7 +99,7 @@ for compiler in $COMPILERS; do
     msg "Using compiler $CXX and version $CPP_VERSION..."
 
     test_using_cmake libosmium
-    test_using_setup pyosmium
+#    test_using_setup pyosmium
     test_using_cmake osmium-tool
     test_using_cmake osmium-contrib
     test_using_cmake osmcoastline
