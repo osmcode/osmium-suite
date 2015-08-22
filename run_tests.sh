@@ -103,6 +103,7 @@ for compiler in $COMPILERS; do
     test_using_cmake osmium-tool
     test_using_cmake osmium-contrib
     test_using_cmake osmcoastline
+    test_using_cmake osm-gis-export
 done
 
 msg DONE

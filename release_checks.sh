@@ -6,7 +6,7 @@
 #
 #
 
-REPOSITORIES="osmium-tool osmium-contrib osmcoastline"
+REPOSITORIES="osmium-tool osmium-contrib osm-gis-export osmcoastline"
 ALL_REPOSITORIES="libosmium $REPOSITORIES"
 
 cd ..
