@@ -94,7 +94,7 @@ In `docs.osmcode.org` directory:
 
 * [ ] Update `bin/build-docs-*`: Add new version numbers
 * [ ] Run `bin/build-docs`
-* [ ] Run `bin/update_links`
+* [ ] Run `bin/update-links`
 * [ ] Run `bin/rsync-it`
 
 
