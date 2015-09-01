@@ -88,6 +88,27 @@ Some notes for the maintainer on what to do for releases.
     git push --tags
 
 
+## Node-Osmium
+
+* [ ] Decide on new version number (see http://semver.org/)
+* [ ] Update version number in `package.json` (look for `version`)
+* [ ] Update `CHANGELOG.md`
+* [ ] Commit updates
+
+    git commit -m '[republish binary] Release vX.Y.Z' CHANGELOG.md package.json
+
+* [ ] Tag release
+
+    git tag vX.Y.Z
+
+* [ ] Push changes
+
+    git push
+    git push --tags
+
+* [ ] Publish npm (see https://github.com/osmcode/node-osmium/issues/38)
+
+
 ## Update documentation
 
 In `docs.osmcode.org` directory:
