@@ -93,6 +93,8 @@ Some notes for the maintainer on what to do for releases.
 * [ ] Decide on new version number (see http://semver.org/)
 * [ ] Update version number in `package.json` (look for `version`)
 * [ ] Update `CHANGELOG.md`
+* [ ] Possibly update libosmium version number in `.travis.yml`
+      (see https://github.com/osmcode/node-osmium/issues/53)
 * [ ] Commit updates
 
     git commit -m '[republish binary] Release vX.Y.Z' CHANGELOG.md package.json
