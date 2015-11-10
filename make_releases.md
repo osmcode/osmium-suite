@@ -93,11 +93,11 @@ Some notes for the maintainer on what to do for releases.
 * [ ] Decide on new version number (see http://semver.org/)
 * [ ] Update version number in `package.json` (look for `version`)
 * [ ] Update `CHANGELOG.md`
-* [ ] Possibly update libosmium version number in `.travis.yml`
-      (see https://github.com/osmcode/node-osmium/issues/53)
+* [ ] Possibly update libosmium version number in `.travis.yml` and
+      `appveyor.yml` (look for 'git clone')
 * [ ] Commit updates
 
-    git commit -m '[republish binary] Release vX.Y.Z' CHANGELOG.md package.json
+    git commit -m '[republish binary] Release vX.Y.Z' CHANGELOG.md package.json .travis.yml appveyor.yml
 
 * [ ] Tag release
 
@@ -108,7 +108,9 @@ Some notes for the maintainer on what to do for releases.
     git push
     git push --tags
 
-* [ ] Publish npm (see https://github.com/osmcode/node-osmium/issues/38)
+* [ ] Publish npm
+
+    npm publish
 
 
 ## Update documentation
