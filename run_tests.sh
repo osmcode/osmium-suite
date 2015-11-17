@@ -7,6 +7,7 @@
 COMPILERS="clang++-3.5,c++11 g++-4.9,c++11 clang++-3.4,c++11 g++-4.8,c++11 clang++-3.5,c++14 g++-4.9,c++14"
 #COMPILERS="clang++,c++11"
 #COMPILERS="g++-4.9,c++11 g++-4.8,c++11"
+COMPILERS_PYOSMIUM="clang++-3.5,c++11 g++-4.9,c++11 clang++-3.5,c++14 g++-4.9,c++14"
 
 if [ -z "$OSMIUM_TEST_BUILD_ROOT" ]; then
     OSMIUM_TEST_BUILD_ROOT='.'
@@ -60,13 +61,13 @@ test_using_cmake() {
     cd $CURRENT_DIR
 }
 
-test_using_setup() {
+test_python() {
     CURRENT_DIR=`pwd`
     REPOS=$1
-    CMAKE_OPTIONS=$2
+    PYTHON=$2
 
     BUILD_DIR="${OSMIUM_TEST_BUILD_ROOT}/build-test-$REPOS-${DATE}-${CXX}-${CPP_VERSION}"
-    msg "Repository $REPOS: Configuring..."
+    msg "Repository $REPOS with $PYTHON: Configuring..."
 
     SOURCE_DIR=`pwd`/$REPOS
     mkdir $BUILD_DIR
@@ -76,11 +77,11 @@ test_using_setup() {
     cd $REPOS
 
     msg "Repository $REPOS: Building..."
-    python setup.py build
+    $PYTHON setup.py build
 
     msg "Repository $REPOS: Testing..."
     cd test
-    python run_tests.py
+    $PYTHON run_tests.py
 
     cd ../../..
     rm -fr $BUILD_DIR
@@ -96,14 +97,22 @@ msg START
 for compiler in $COMPILERS; do
     CXX=${compiler%,*}
     CPP_VERSION=${compiler#*,}
-    msg "Using compiler $CXX and version $CPP_VERSION..."
+    msg "Building C++ stuff using compiler $CXX and version $CPP_VERSION..."
 
     test_using_cmake libosmium
-#    test_using_setup pyosmium
     test_using_cmake osmium-tool
     test_using_cmake osmium-contrib
     test_using_cmake osmcoastline
     test_using_cmake osm-gis-export
+done
+
+for compiler in $COMPILERS_PYOSMIUM; do
+    CXX=${compiler%,*}
+    CPP_VERSION=${compiler#*,}
+    msg "Building PyOsmium using compiler $CXX and version $CPP_VERSION..."
+
+    test_python pyosmium python2
+    test_python pyosmium python3
 done
 
 msg DONE
