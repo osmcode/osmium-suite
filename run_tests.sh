@@ -7,7 +7,6 @@
 COMPILERS="clang++-3.5,c++11 g++-4.9,c++11 clang++-3.4,c++11 g++-4.8,c++11 clang++-3.5,c++14 g++-4.9,c++14"
 #COMPILERS="clang++,c++11"
 #COMPILERS="g++-4.9,c++11 g++-4.8,c++11"
-COMPILERS_PYOSMIUM="clang++-3.5,c++11 g++-4.9,c++11 clang++-3.5,c++14 g++-4.9,c++14"
 
 if [ -z "$OSMIUM_TEST_BUILD_ROOT" ]; then
     OSMIUM_TEST_BUILD_ROOT='.'
@@ -106,14 +105,13 @@ for compiler in $COMPILERS; do
     test_using_cmake osm-gis-export
 done
 
-for compiler in $COMPILERS_PYOSMIUM; do
-    CXX=${compiler%,*}
-    CPP_VERSION=${compiler#*,}
-    msg "Building PyOsmium using compiler $CXX and version $CPP_VERSION..."
-
-    test_python pyosmium python2
-    test_python pyosmium python3
-done
+msg "Building PyOsmium using system compiler..."
+unset CC
+unset CXX
+unset CFLAGS
+unset CXXFLAGS
+test_python pyosmium python2
+test_python pyosmium python3
 
 msg DONE
 
