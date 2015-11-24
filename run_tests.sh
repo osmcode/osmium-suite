@@ -60,6 +60,34 @@ test_using_cmake() {
     cd $CURRENT_DIR
 }
 
+test_using_make() {
+    CURRENT_DIR=`pwd`
+    REPOS=$1
+
+    BUILD_DIR="${OSMIUM_TEST_BUILD_ROOT}/build-test-$REPOS-${DATE}-${CXX}-${CPP_VERSION}"
+
+    msg "Repository $REPOS: Configuring..."
+
+    SOURCE_DIR=`pwd`/$REPOS
+    mkdir $BUILD_DIR
+    cd $BUILD_DIR
+    ln -s "$SOURCE_DIR/../libosmium"
+    git clone $SOURCE_DIR $REPOS
+    cd $REPOS
+
+    msg "Repository $REPOS: Building..."
+    make VERBOSE=1
+
+    msg "Repository $REPOS: Testing..."
+    make test
+
+    cd ../..
+    rm -fr $BUILD_DIR
+
+    msg "Repository $REPOS: done\n"
+    cd $CURRENT_DIR
+}
+
 test_python() {
     CURRENT_DIR=`pwd`
     REPOS=$1
@@ -103,6 +131,7 @@ for compiler in $COMPILERS; do
     test_using_cmake osmium-contrib
     test_using_cmake osmcoastline
     test_using_cmake osm-gis-export
+    test_using_make node-osmium
 done
 
 msg "Building PyOsmium using system compiler..."
