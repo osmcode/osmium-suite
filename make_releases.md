@@ -29,6 +29,9 @@ Some notes for the maintainer on what to do for releases.
     git push
     git push --tags
 
+* Go to https://github.com/osmcode/libosmium/releases and edit the release.
+  Put "Version X.Y.Z" in the title. Cut and paste section from change log.
+
 
 ## PyOsmium
 
@@ -49,6 +52,9 @@ Some notes for the maintainer on what to do for releases.
     git push
     git push --tags
 
+* Go to https://github.com/osmcode/pyosmium/releases and edit the release.
+  Put "Version X.Y.Z" in the title. Cut and paste section from change log.
+
 
 ## Osmium tool
 
@@ -68,6 +74,9 @@ Some notes for the maintainer on what to do for releases.
     git push
     git push --tags
 
+* Go to https://github.com/osmcode/osmium-tool/releases and edit the release.
+  Put "Version X.Y.Z" in the title. Cut and paste section from change log.
+
 
 ## OSMCoastline
 
@@ -86,6 +95,9 @@ Some notes for the maintainer on what to do for releases.
 
     git push
     git push --tags
+
+* Go to https://github.com/osmcode/osmcoastline/releases and edit the release.
+  Put "Version X.Y.Z" in the title. Cut and paste section from change log.
 
 
 ## Node-Osmium
