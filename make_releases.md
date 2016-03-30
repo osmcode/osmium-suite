@@ -15,6 +15,7 @@ Some notes for the maintainer on what to do for releases.
 
 * [ ] Decide on new version number (see http://semver.org/)
 * [ ] Update version number in `CMakeLists.txt` (look for `LIBOSMIUM_VERSION_`)
+      and `include/osmium/version.hpp`
 * [ ] Update `CHANGELOG.md`
 * [ ] Commit updates
 
