@@ -19,7 +19,7 @@ Some notes for the maintainer on what to do for releases.
 * [ ] Update `CHANGELOG.md`
 * [ ] Commit updates
 
-    git commit -m 'Release vX.Y.Z' CHANGELOG.md CMakeLists.txt
+    git commit -m 'Release vX.Y.Z' CHANGELOG.md CMakeLists.txt include/osmium/version.hpp
 
 * [ ] Tag release
 
