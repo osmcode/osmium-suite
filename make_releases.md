@@ -106,11 +106,10 @@ Some notes for the maintainer on what to do for releases.
 * [ ] Decide on new version number (see http://semver.org/)
 * [ ] Update version number in `package.json` (look for `version`)
 * [ ] Update `CHANGELOG.md`
-* [ ] Possibly update libosmium version number in `.travis.yml` and
-      `appveyor.yml` (look for 'git clone')
+* [ ] Possibly update libosmium version number in `package.json`
 * [ ] Commit updates
 
-    git commit -m '[publish binary] Release vX.Y.Z' CHANGELOG.md package.json .travis.yml appveyor.yml
+    git commit -m '[publish binary] Release vX.Y.Z' CHANGELOG.md package.json
 
 * [ ] Tag release
 
