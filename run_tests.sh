@@ -131,7 +131,7 @@ for compiler in $COMPILERS; do
     test_using_cmake osmium-contrib
     test_using_cmake osmcoastline
     test_using_cmake osm-gis-export
-    test_using_make node-osmium
+#    test_using_make node-osmium
 done
 
 msg "Building PyOsmium using system compiler..."

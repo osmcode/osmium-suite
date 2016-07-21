@@ -110,7 +110,7 @@ Some notes for the maintainer on what to do for releases.
       `appveyor.yml` (look for 'git clone')
 * [ ] Commit updates
 
-    git commit -m '[republish binary] Release vX.Y.Z' CHANGELOG.md package.json .travis.yml appveyor.yml
+    git commit -m '[publish binary] Release vX.Y.Z' CHANGELOG.md package.json .travis.yml appveyor.yml
 
 * [ ] Tag release
 
