@@ -131,6 +131,7 @@ for compiler in $COMPILERS; do
     test_using_cmake osmium-contrib
     test_using_cmake osmcoastline
     test_using_cmake osm-gis-export
+    test_using_cmake osm-area-tools
 #    test_using_make node-osmium
 done
 
