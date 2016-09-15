@@ -103,10 +103,10 @@ test_python() {
     git clone $SOURCE_DIR $REPOS
     cd $REPOS
 
-    msg "Repository $REPOS: Building..."
+    msg "Repository $REPOS with $PYTHON: Building..."
     $PYTHON setup.py build
 
-    msg "Repository $REPOS: Testing..."
+    msg "Repository $REPOS with $PYTHON: Testing..."
     cd test
     $PYTHON run_tests.py
 
@@ -132,7 +132,7 @@ for compiler in $COMPILERS; do
     test_using_cmake osmcoastline
     test_using_cmake osm-gis-export
     test_using_cmake osm-area-tools
-#    test_using_make node-osmium
+    test_using_make node-osmium
 done
 
 msg "Building PyOsmium using system compiler..."
