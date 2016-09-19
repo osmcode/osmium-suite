@@ -59,6 +59,7 @@ Some notes for the maintainer on what to do for releases.
 
 ## Osmium tool
 
+* [ ] Run IO tests. See test/io/Makefile.in for instructions
 * [ ] Decide on new version number (see http://semver.org/)
 * [ ] Update version number in `CMakeLists.txt` (look for `OSMIUM_VERSION_`)
 * [ ] Update `CHANGELOG.md`
@@ -119,6 +120,9 @@ Some notes for the maintainer on what to do for releases.
 
     git push
     git push --tags
+
+* Go to https://github.com/osmcode/node-osmium/releases and edit the release.
+  Put "Version X.Y.Z" in the title. Cut and paste section from change log.
 
 * [ ] Publish npm
 
