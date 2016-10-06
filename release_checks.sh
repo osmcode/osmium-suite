@@ -6,7 +6,7 @@
 #
 #
 
-REPOSITORIES="osmium-tool osmium-contrib osm-gis-export osmcoastline"
+REPOSITORIES="osmium-tool osmium-contrib osm-gis-export osmcoastline osm-area-tools osmium-filter"
 CATCH_REPOSITORIES="osmium-tool"
 ALL_REPOSITORIES="libosmium $REPOSITORIES"
 
@@ -34,7 +34,7 @@ done
 echo "== Done."
 
 echo "== Comparing catch files..."
-for repos in $CACTCH_REPOSITORIES; do
+for repos in $CATCH_REPOSITORIES; do
     if diff -u libosmium/test/include/catch.hpp $repos/test/include/catch.hpp; then
         echo "[${GREEN}OK ${NORM}] test/include/catch.hpp"
     else
