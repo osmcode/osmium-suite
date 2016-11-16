@@ -36,13 +36,13 @@ Some notes for the maintainer on what to do for releases.
 
 ## PyOsmium
 
+* [ ] Check that 
 * [ ] Decide on new version number (usually same version number as Libosmium)
-* [ ] Update version number in `setup.py`. Look for `version`.
-* [ ] Update version number in `doc/conf.py`. Look for `version` and `release`.
+* [ ] Update all version numbers in `osmium/version.py`.
 * [ ] Update `CHANGELOG.md`
 * [ ] Commit updates
 
-    git commit -m 'Release vX.Y.Z' CHANGELOG.md setup.py doc/conf.py
+    git commit -m 'Release vX.Y.Z' CHANGELOG.md osmium/version.py
 
 * [ ] Tag release `git tag vX.Y.Z`
 
@@ -52,6 +52,12 @@ Some notes for the maintainer on what to do for releases.
 
     git push
     git push --tags
+    
+* [ ] Build Pypi package
+
+    rm -rf dist/
+    python3 setup.py sdist
+    twine upload dist/*
 
 * Go to https://github.com/osmcode/pyosmium/releases and edit the release.
   Put "Version X.Y.Z" in the title. Cut and paste section from change log.
