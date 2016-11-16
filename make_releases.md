@@ -36,7 +36,7 @@ Some notes for the maintainer on what to do for releases.
 
 ## PyOsmium
 
-* [ ] Check that 
+* [ ] Make sure tests pass: `cd test; python run_tests.py`
 * [ ] Decide on new version number (usually same version number as Libosmium)
 * [ ] Update all version numbers in `osmium/version.py`.
 * [ ] Update `CHANGELOG.md`
