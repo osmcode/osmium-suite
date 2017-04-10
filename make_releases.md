@@ -27,8 +27,7 @@ Some notes for the maintainer on what to do for releases.
 
 * [ ] Push changes:
 
-    git push
-    git push --tags
+    git push && git push --tags
 
 * [ ] Go to https://github.com/osmcode/libosmium/releases and edit the release.
       Put "Version X.Y.Z" in the title. Cut and paste section from change log.
@@ -50,8 +49,7 @@ Some notes for the maintainer on what to do for releases.
 
 * [ ] Push changes:
 
-    git push
-    git push --tags
+    git push && git push --tags
 
 * [ ] Build Pypi package:
 
@@ -66,6 +64,7 @@ Some notes for the maintainer on what to do for releases.
 ## Osmium tool
 
 * [ ] Run IO tests. See `test/io/Makefile.in` for instructions.
+* [ ] If needed, update libosmium version in `README.md` and `CMakeLists.txt`.
 * [ ] Decide on new version number (see http://semver.org/).
 * [ ] Update version number in `CMakeLists.txt` (look for `OSMIUM_VERSION_`).
 * [ ] Update `CHANGELOG.md`.
@@ -79,8 +78,7 @@ Some notes for the maintainer on what to do for releases.
 
 * [ ] Push changes:
 
-    git push
-    git push --tags
+    git push && git push --tags
 
 * [ ] Go to https://github.com/osmcode/osmium-tool/releases and edit the release.
       Put "Version X.Y.Z" in the title. Cut and paste section from change log.
@@ -101,8 +99,7 @@ Some notes for the maintainer on what to do for releases.
 
 * [ ] Push changes:
 
-    git push
-    git push --tags
+    git push && git push --tags
 
 * [ ] Go to https://github.com/osmcode/osmcoastline/releases and edit the release.
       Put "Version X.Y.Z" in the title. Cut and paste section from change log.
@@ -124,8 +121,7 @@ Some notes for the maintainer on what to do for releases.
 
 * [ ] Push changes
 
-    git push
-    git push --tags
+    git push && git push --tags
 
 * [ ] Go to https://github.com/osmcode/node-osmium/releases and edit the release.
       Put "Version X.Y.Z" in the title. Cut and paste section from change log.
