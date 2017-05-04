@@ -37,7 +37,7 @@ Some notes for the maintainer on what to do for releases.
 
 * [ ] Make sure tests pass: `cd test; python run_tests.py`
 * [ ] Decide on new version number (usually same version number as Libosmium).
-* [ ] Update all version numbers in `osmium/version.py`.
+* [ ] Update all version numbers in `src/osmium/version.py`.
 * [ ] Update `CHANGELOG.md`.
 * [ ] Commit updates:
 
@@ -53,8 +53,12 @@ Some notes for the maintainer on what to do for releases.
 
 * [ ] Build Pypi package:
 
-    rm -rf dist/
-    python3 setup.py sdist
+    rm -rf dist/ && python3 setup.py sdist
+    
+* [ ] Download Windows wheels from Appveyor into `dist`directory
+
+* [ ] Upload packages to Pypi:
+
     twine upload dist/*
 
 * [ ] Go to https://github.com/osmcode/pyosmium/releases and edit the release.
