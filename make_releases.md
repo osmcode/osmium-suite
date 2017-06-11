@@ -16,6 +16,7 @@ Some notes for the maintainer on what to do for releases.
 * [ ] Decide on new version number (see http://semver.org/).
 * [ ] Update version number in `CMakeLists.txt` (look for `LIBOSMIUM_VERSION_`)
       and `include/osmium/version.hpp`.
+* [ ] Update version number in `package.json`
 * [ ] Update `CHANGELOG.md`.
 * [ ] Commit updates:
 
@@ -28,6 +29,16 @@ Some notes for the maintainer on what to do for releases.
 * [ ] Push changes:
 
     git push && git push --tags
+
+* [ ] Test npm packaging
+
+Ensure the below command only displays files you intend to publish:
+
+    npm pack && tar -ztvf *tgz
+
+* [ ] Publish npm
+
+    npm publish
 
 * [ ] Go to https://github.com/osmcode/libosmium/releases and edit the release.
       Put "Version X.Y.Z" in the title. Cut and paste section from change log.
@@ -114,7 +125,7 @@ Some notes for the maintainer on what to do for releases.
 * [ ] Decide on new version number (see http://semver.org/)
 * [ ] Update version number in `package.json` (look for `version`)
 * [ ] Update `CHANGELOG.md`
-* [ ] Possibly update libosmium version number in `package.json`
+* [ ] Possibly update libosmium in `package.json`
 * [ ] Commit updates
 
     git commit -m '[publish binary] Release vX.Y.Z' CHANGELOG.md package.json
@@ -127,12 +138,18 @@ Some notes for the maintainer on what to do for releases.
 
     git push && git push --tags
 
-* [ ] Go to https://github.com/osmcode/node-osmium/releases and edit the release.
-      Put "Version X.Y.Z" in the title. Cut and paste section from change log.
+* [ ] Test npm packaging
 
+Ensure the below command only displays files you intend to publish:
+
+    npm pack && tar -ztvf *tgz
+    
 * [ ] Publish npm
 
     npm publish
+
+* [ ] Go to https://github.com/osmcode/node-osmium/releases and edit the release.
+      Put "Version X.Y.Z" in the title. Cut and paste section from change log.
 
 
 ## Update documentation
