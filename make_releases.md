@@ -13,6 +13,8 @@ Some notes for the maintainer on what to do for releases.
 
 ## Libosmium
 
+* [ ] Are there any changes which need to be backported to the stable 2.11
+      branch. If yes, do these backports and release the backport first.
 * [ ] Decide on new version number (see http://semver.org/).
 * [ ] Update version number in `CMakeLists.txt` (look for `LIBOSMIUM_VERSION_`)
       and `include/osmium/version.hpp`.
