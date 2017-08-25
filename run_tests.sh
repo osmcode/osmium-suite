@@ -4,9 +4,7 @@
 #
 
 # the compiler/c++ version combinations to test
-COMPILERS="clang++-3.5,c++11 g++-4.9,c++11 clang++-3.4,c++11 g++-4.8,c++11 clang++-3.5,c++14 g++-4.9,c++14"
-#COMPILERS="clang++,c++11"
-#COMPILERS="g++-4.9,c++11 g++-4.8,c++11"
+COMPILERS="g++-6,c++11 clang++-3.9,c++11 g++-5,c++11 clang++-3.8,c++11 g++-6,c++14 clang++-3.9,c++14 g++-4.9,c++11 clang++-3.6,c++11"
 
 if [ -z "$OSMIUM_TEST_BUILD_ROOT" ]; then
     OSMIUM_TEST_BUILD_ROOT='.'
@@ -123,8 +121,14 @@ msg START
 
 for compiler in $COMPILERS; do
     CXX=${compiler%,*}
+    if [ "${CXX%-*}" = "g++" ]; then
+        CC=gcc-${CXX#*-}
+    fi
+    if [ "${CXX%-*}" = "clang++" ]; then
+        CC=clang-${CXX#*-}
+    fi
     CPP_VERSION=${compiler#*,}
-    msg "Building C++ stuff using compiler $CXX and version $CPP_VERSION..."
+    msg "Building C++ stuff using compiler CXX=$CXX and CC=$CC and version $CPP_VERSION..."
 
     test_using_cmake libosmium
     test_using_cmake osmium-tool
