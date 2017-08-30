@@ -70,6 +70,7 @@ Some notes for the maintainer on what to do for releases.
 ## Osmium tool
 
 * [ ] Run IO tests. See `test/io/Makefile.in` for instructions.
+* [ ] Compile with option WITH_EXTRA_TESTS and run tests.
 * [ ] If needed, update libosmium version in `README.md` and `CMakeLists.txt`.
 * [ ] Decide on new version number (see http://semver.org/).
 * [ ] Update version number in `CMakeLists.txt` (look for `OSMIUM_VERSION_`).
