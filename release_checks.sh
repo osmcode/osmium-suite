@@ -7,7 +7,7 @@
 #
 
 REPOSITORIES="osmium-tool osmium-contrib osm-gis-export osmcoastline osm-area-tools osmium-filter"
-CATCH_REPOSITORIES="osmium-tool"
+CATCH_REPOSITORIES="osmium-tool osmium-filter"
 ALL_REPOSITORIES="libosmium $REPOSITORIES"
 
 cd ..
@@ -23,7 +23,7 @@ RED="\033[1;31m"
 
 echo "== Comparing cmake files..."
 for repos in $REPOSITORIES; do
-    for file in FindOsmium; do
+    for file in FindOsmium FindProtozero; do
         if diff -u libosmium/cmake/${file}.cmake $repos/cmake/${file}.cmake; then
             echo "[${GREEN}OK ${NORM}] ${file}"
         else

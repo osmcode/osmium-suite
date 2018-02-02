@@ -70,6 +70,7 @@ test_using_make() {
     mkdir $BUILD_DIR
     cd $BUILD_DIR
     ln -s "$SOURCE_DIR/../libosmium"
+    ln -s "$SOURCE_DIR/../protozero"
     git clone $SOURCE_DIR $REPOS
     cd $REPOS
 
