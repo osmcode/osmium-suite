@@ -35,10 +35,10 @@ echo "== Done."
 
 echo "== Comparing catch files..."
 for repos in $CATCH_REPOSITORIES; do
-    if diff -u libosmium/test/include/catch.hpp $repos/test/include/catch.hpp; then
-        echo "[${GREEN}OK ${NORM}] test/include/catch.hpp"
+    if diff -u libosmium/test/catch/catch.hpp $repos/test/include/catch.hpp; then
+        echo "[${GREEN}OK ${NORM}] test/catch/catch.hpp"
     else
-        echo "[${RED}ERR${NORM}] test/include/catch.hpp"
+        echo "[${RED}ERR${NORM}] test/catch/catch.hpp"
     fi
 done
 echo "== Done."
