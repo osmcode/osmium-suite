@@ -6,7 +6,7 @@
 #
 #
 
-REPOSITORIES="osmium-tool osmium-contrib osm-gis-export osmcoastline osm-area-tools osmium-filter"
+REPOSITORIES="osmium-tool osmium-contrib osm-gis-export osmcoastline osm-area-tools osmium-filter osm-data-model-tools"
 CATCH_REPOSITORIES="osmium-tool osmium-filter"
 ALL_REPOSITORIES="libosmium $REPOSITORIES"
 
