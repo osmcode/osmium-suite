@@ -4,7 +4,7 @@
 #
 
 # the compiler/c++ version combinations to test
-COMPILERS="g++-6,c++11 clang++-3.9,c++11 g++-5,c++11 clang++-3.8,c++11 g++-6,c++14 clang++-3.9,c++14 g++-4.9,c++11 clang++-3.6,c++11"
+COMPILERS="g++-8,c++11 clang++-6,c++11 g++-8,c++14 clang++-8,c++11 clang++-8,c++14"
 
 if [ -z "$OSMIUM_TEST_BUILD_ROOT" ]; then
     OSMIUM_TEST_BUILD_ROOT='.'
@@ -77,8 +77,8 @@ test_using_make() {
     msg "Repository $REPOS: Building..."
     make VERBOSE=1
 
-    msg "Repository $REPOS: Testing..."
-    make test
+#    msg "Repository $REPOS: Testing..."
+#    make test
 
     cd ../..
     rm -fr $BUILD_DIR
