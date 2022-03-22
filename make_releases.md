@@ -53,12 +53,12 @@ Some notes for the maintainer on what to do for releases.
 
 * [ ] Build Pypi package:
 
-    rm -rf dist/ && python3 setup.py sdist
+    rm -rf dist/ && python3 -m build -s
     
 * [ ] Goto https://github.com/osmcode/pyosmium-wheel-build and update the submodules.
-      Download wheels when travis has finished building them.
+      Download wheels from https://github.com/osmcode/pyosmium-wheel-build/actions/.
     
-* [ ] Download Windows wheels from Appveyor into `dist` directory
+* [ ] Download Windows wheels from https://github.com/osmcode/pyosmium/actions into `dist` directory
 
 * [ ] Upload packages to Pypi:
 
