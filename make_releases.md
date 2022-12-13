@@ -35,13 +35,14 @@ Some notes for the maintainer on what to do for releases.
 
 ## PyOsmium
 
-* [ ] Make sure tests pass: `cd test; python run_tests.py`
+* [ ] Make sure tests pass: `python3 -m pytest tests`
 * [ ] Decide on new version number.
 * [ ] Update all version numbers in `src/osmium/version.py`.
+* [ ] Update all versions in `.github/workflows/build_wheels.yml`
 * [ ] Update `CHANGELOG.md`.
 * [ ] Commit updates:
 
-    git commit -m 'Release vX.Y.Z' CHANGELOG.md src/osmium/version.py
+    git commit -m 'Release vX.Y.Z' CHANGELOG.md src/osmium/version.py .github/workflows/build_wheels.yml
 
 * [ ] Tag release:
 
@@ -55,10 +56,7 @@ Some notes for the maintainer on what to do for releases.
 
     rm -rf dist/ && python3 -m build -s
     
-* [ ] Goto https://github.com/osmcode/pyosmium-wheel-build and update the submodules.
-      Download wheels from https://github.com/osmcode/pyosmium-wheel-build/actions/.
-    
-* [ ] Download Windows wheels from https://github.com/osmcode/pyosmium/actions into `dist` directory
+* [ ] Download all wheels from https://github.com/osmcode/pyosmium/actions into `dist` directory
 
 * [ ] Upload packages to Pypi:
 
