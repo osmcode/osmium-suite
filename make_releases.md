@@ -6,7 +6,7 @@ Some notes for the maintainer on what to do for releases.
 
 ## Preparations
 
-* [ ] Travis and Appveyor builds okay? (http://osmcode.org/status.html)
+* [ ] Github actions and Appveyor builds okay? (http://osmcode.org/status.html)
 * [ ] Run `release_checks.sh` and check for errors.
 * [ ] Run `run_tests.sh` and check for errors.
 
@@ -29,7 +29,7 @@ Some notes for the maintainer on what to do for releases.
 
     git push && git push --tags
 
-* [ ] Go to https://github.com/osmcode/libosmium/releases and edit the release.
+* [ ] Go to https://github.com/osmcode/libosmium/tags and create release from tag.
       Put "Version X.Y.Z" in the title. Cut and paste section from change log.
 
 
@@ -72,7 +72,7 @@ Some notes for the maintainer on what to do for releases.
 * [ ] Compile with option WITH_EXTRA_TESTS and run tests.
 * [ ] If needed, update libosmium version in `README.md` and `CMakeLists.txt`.
 * [ ] Decide on new version number (see http://semver.org/).
-* [ ] Update version number in `CMakeLists.txt` (look for `OSMIUM_VERSION_`).
+* [ ] Update version number in `CMakeLists.txt` (look for `project`).
 * [ ] Update `CHANGELOG.md`.
 * [ ] Commit updates:
 
@@ -86,7 +86,7 @@ Some notes for the maintainer on what to do for releases.
 
     git push && git push --tags
 
-* [ ] Go to https://github.com/osmcode/osmium-tool/releases and edit the release.
+* [ ] Go to https://github.com/osmcode/osmium-tool/tags and create release from tag.
       Put "Version X.Y.Z" in the title. Cut and paste section from change log.
 
 
