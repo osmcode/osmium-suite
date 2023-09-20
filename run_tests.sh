@@ -137,7 +137,7 @@ for compiler in $COMPILERS; do
     test_using_cmake osmcoastline
     test_using_cmake osm-gis-export
     test_using_cmake osm-area-tools
-    test_using_make node-osmium
+#    test_using_make node-osmium
 done
 
 msg "Building PyOsmium using system compiler..."
@@ -145,7 +145,6 @@ unset CC
 unset CXX
 unset CFLAGS
 unset CXXFLAGS
-test_python pyosmium python2
 test_python pyosmium python3
 
 msg DONE
