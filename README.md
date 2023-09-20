@@ -3,8 +3,6 @@
 
 This repository contains some scripts for the maintainers of the Osmium suite.
 
-[![Build Status](https://travis-ci.org/osmcode/osmium-suite.svg?branch=master)](https://travis-ci.org/osmcode/osmium-suite)
-
 Users of Libosmium or one of the Osmium-based programs will not need this!
 Please look elsewhere for...
 
