@@ -93,7 +93,7 @@ Some notes for the maintainer on what to do for releases.
 ## OSMCoastline
 
 * [ ] Decide on new version number (see http://semver.org/).
-* [ ] Update version number in `CMakeLists.txt` (look for `OSMCOASTLINE_VERSION_`).
+* [ ] Update version number in `CMakeLists.txt` (see project()).
 * [ ] Update `CHANGELOG.md`.
 * [ ] Commit updates:
 
