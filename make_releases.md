@@ -33,16 +33,16 @@ Some notes for the maintainer on what to do for releases.
       Put "Version X.Y.Z" in the title. Cut and paste section from change log.
 
 
-## PyOsmium
+## Pyosmium
 
 * [ ] Make sure tests pass: `python3 -m pytest tests`
 * [ ] Decide on new version number.
-* [ ] Update all version numbers in `src/osmium/version.py`.
-* [ ] Update all versions in `.github/workflows/build_wheels.yml`
+* [ ] Update version number in `ptproject.toml`.
+* [ ] Update libosmium/protozero versions as required in `CMakeLists.txt`
 * [ ] Update `CHANGELOG.md`.
 * [ ] Commit updates:
 
-    git commit -m 'Release vX.Y.Z' CHANGELOG.md src/osmium/version.py .github/workflows/build_wheels.yml
+    git commit -m 'Release vX.Y.Z' CHANGELOG.md CMakeLists.txt pyproject.toml
 
 * [ ] Tag release:
 
