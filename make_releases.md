@@ -37,7 +37,7 @@ Some notes for the maintainer on what to do for releases.
 
 * [ ] Make sure tests pass: `python3 -m pytest tests`
 * [ ] Decide on new version number.
-* [ ] Update version number in `ptproject.toml`.
+* [ ] Update version number in `pyproject.toml`.
 * [ ] Update libosmium/protozero versions as required in `CMakeLists.txt`
 * [ ] Update `CHANGELOG.md`.
 * [ ] Commit updates:
