@@ -40,9 +40,10 @@ Some notes for the maintainer on what to do for releases.
 * [ ] Update version number in `pyproject.toml`.
 * [ ] Update libosmium/protozero versions as required in `CMakeLists.txt`
 * [ ] Update `CHANGELOG.md`.
+* [ ] Remake man pages: `cd docs; make man`
 * [ ] Commit updates:
 
-    git commit -m 'Release vX.Y.Z' CHANGELOG.md CMakeLists.txt pyproject.toml
+    git commit -m 'Release vX.Y.Z' CHANGELOG.md CMakeLists.txt pyproject.toml docs/man/*1
 
 * [ ] Tag release:
 
