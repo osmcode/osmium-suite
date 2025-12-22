@@ -66,6 +66,12 @@ Some notes for the maintainer on what to do for releases.
 * [ ] Go to https://github.com/osmcode/pyosmium/releases and edit the release.
       Put "Version X.Y.Z" in the title. Cut and paste section from change log.
 
+* [ ] Create/update release documentation
+  * create/checkout branch `docs-X.Y.x`
+  * change version in `mkdocs.yaml`
+  * recreate documentation: `rm -rf site-html; mkdocs build`
+  * remove unnecessary files: `rm -rf site-html/Makefile site-html/man site-html/data/out/*`
+  * commit: `git add site-html mkdocs.yaml; git commit`
 
 ## Osmium tool
 
